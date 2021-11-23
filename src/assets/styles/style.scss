@@ -1,0 +1,23 @@
+@import './_reset';
+@import 'antd/dist/antd.css';
+
+@font-face {
+  font-family: 'Kopub Dotum';
+  src: url('../fonts/KoPubDotum/KoPubDotumLight.woff') format('woff');
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  font-family: 'KoPub Dotum';
+  font-weight: bold;
+  font-size: 62.5%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #0d1a21;
+  color: #fff;
+  font-size: 2.8rem;
+}
