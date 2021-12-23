@@ -1,0 +1,28 @@
+// Select Options
+.ant-select-dropdown {
+  background-color: #33454d;
+  border: 0;
+}
+.ant-select-item {
+  // height: 3.8rem;
+  padding: 8px 12px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: #202e35;
+}
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: #7290a1;
+  color: #fff;
+}
+.ant-select-item-option-content {
+  overflow: visible;
+  white-space: normal;
+  text-overflow: unset;
+}
+.rc-virtual-list-holder {
+  max-height: 35rem !important;
+}
+
