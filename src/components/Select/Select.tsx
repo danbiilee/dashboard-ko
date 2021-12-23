@@ -6,7 +6,7 @@ import { Select as A_Select } from 'antd';
 
 const { Option } = A_Select;
 
-interface SelectProps {
+export interface SelectProps {
   type: 'team' | 'service';
   searchInputs: SearchInputs;
   mappedNames: MappedRelation[];

@@ -1,3 +1,56 @@
+// Date Picker
+.ant-picker-dropdown {
+  font-size: 2rem;
+  font-family: 'KoPub Dotum';
+}
+.ant-picker-panel-container {
+  background-color: #33454d;
+}
+.ant-picker-panel,
+.ant-picker-header {
+  border-color: #5470805c;
+}
+.ant-picker-header,
+.ant-picker-header button,
+.ant-picker-header-view button:hover {
+  color: #fff;
+}
+.ant-picker-header * {
+  cursor: pointer;
+}
+.ant-picker-header > button:hover {
+  color: #607d8b;
+}
+.ant-picker-cell {
+  .ant-picker-cell-inner {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+  }
+  &:not(.ant-picker-cell-in-view) .ant-picker-cell-inner {
+    color: #607d8b;
+  }
+  &:hover:not(.ant-picker-cell-in-view) .ant-picker-cell-inner,
+  &:hover:not(.ant-picker-cell-selected):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end):not(.ant-picker-cell-range-hover-start):not(.ant-picker-cell-range-hover-end)
+    .ant-picker-cell-inner {
+    background-color: #607d8b;
+    color: #fff;
+  }
+}
+.ant-picker-cell-disabled {
+  .ant-picker-cell-inner {
+    color: #607d8b;
+  }
+  &::before {
+    display: none;
+    background-color: none;
+  }
+}
+
 // Select Options
 .ant-select-dropdown {
   background-color: #33454d;
