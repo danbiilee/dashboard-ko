@@ -1,10 +1,11 @@
 import React from 'react';
 import Main from '@layouts/Main';
 import { CriticalWarningContentBox as ContentBox } from '@layouts/ContentBox';
+import InputGroup from '@layouts/InputGroup';
 const CriticalWarningStatus = () => {
   return (
     <Main type="status">
-      <div>critical/warning status</div>
+      <InputGroup />
       <ContentBox>
         <div>test</div>
       </ContentBox>
