@@ -1,6 +1,7 @@
 import React from 'react';
 import Main from '@layouts/Main';
 import { AlarmContentBox as ContentBox } from '@layouts/ContentBox';
+import Grid from '@components/Grid';
 const AlarmDashboard = () => {
   return (
     <Main type="dashboard">
@@ -17,16 +18,16 @@ const AlarmDashboard = () => {
         <div>test</div>
       </ContentBox>
       <ContentBox title="서비스별 발생현황 TOP10 / 월" tooltip={`${TOOLTIP.pre} ${TOOLTIP.month}`}>
-        <div>test</div>
+        <Grid type="month" />
       </ContentBox>
       <ContentBox title="알람 미조치 리스트 TOP10" tooltip={`${TOOLTIP.pre} ${TOOLTIP.notTaken}`}>
-        <div>test</div>
+        <Grid type="notTaken" />
       </ContentBox>
       <ContentBox title="알람별 발생현황 TOP10 / 주" tooltip={`${TOOLTIP.pre} ${TOOLTIP.gridWeek}`}>
-        <div>test</div>
+        <Grid type="week" />
       </ContentBox>
       <ContentBox title="알람별 증감현황 TOP10 / 전주대비" tooltip={`${TOOLTIP.pre} ${TOOLTIP.prepare}`}>
-        <div>test</div>
+        <Grid type="prepare" />
       </ContentBox>
       <ContentBox title="시간별 알람현황" tooltip={`${TOOLTIP.pre} ${TOOLTIP.time}`} titleSize="lg">
         <div>test</div>
