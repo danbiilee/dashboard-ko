@@ -1,2 +1,4 @@
 import ExcelButton from './ExcelButton';
-export { ExcelButton };
+import SearchButton from './SearchButton';
+
+export { ExcelButton, SearchButton };
