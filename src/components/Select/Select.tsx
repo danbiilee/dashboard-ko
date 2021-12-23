@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyledSelect } from './Select.style';
 import ArrowBox from '@images/btn-dropdown.png';
-import { SearchInputs, MappedRelation, SelectType } from '@customTypes/common';
+import { SearchInputs, MappedRelation } from '@customTypes/common';
 import { Select as A_Select } from 'antd';
 
 const { Option } = A_Select;
 
 interface SelectProps {
-  type: SelectType;
+  type: 'team' | 'service';
   searchInputs: SearchInputs;
   mappedNames: MappedRelation[];
   handleChange: (name: string, value: string) => void;
