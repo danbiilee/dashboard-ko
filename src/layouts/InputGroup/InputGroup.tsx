@@ -3,6 +3,7 @@ import { StyledInputGroup } from './InputGroup.style';
 import { SearchInputs, MappedRelation } from '@customTypes/common';
 import Label from '@components/Label';
 import Select from '@components/Select';
+import RangePicker from '@components/RangePicker';
 import { ExcelButton, SearchButton } from '@components/Button';
 import { useRelation } from '@hooks/useRelation';
 
@@ -50,7 +51,7 @@ const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }
         <Select type="service" searchInputs={localInputs} mappedNames={mappedNames!} handleChange={handleChange} />
       </Label>
       <Label name="기간">
-        <span>date</span>
+        <RangePicker searchInputs={localInputs} handleChange={handleChange} />
       </Label>
       <SearchButton searchInputs={localInputs} setSearchInputs={setSearchInputs} />
       <ExcelButton searchInputs={localInputs} />
