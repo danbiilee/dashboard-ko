@@ -14,3 +14,10 @@ export interface MappedRelation {
   service: string[];
   selected: boolean;
 }
+
+// Chart
+export interface ChartTabQuery {
+  tab: string;
+}
+
+export type ChartParam = SearchInputs | ChartTabQuery;
