@@ -79,3 +79,13 @@
   max-height: 35rem !important;
 }
 
+// Spin
+.ant-spin {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ant-spin-dot-item {
+  background-color: #528500;
+}
