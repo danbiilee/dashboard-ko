@@ -1,0 +1,18 @@
+{
+  "metrics": [
+    {
+      "ALARM_NAME": "Memory 사용률",
+      "SERVICE_NAME": "EMS(서비스)",
+      "THIS_WEEK": 3,
+      "LAST_WEEK": 71,
+      "INC": -95
+    },
+    {
+      "ALARM_NAME": "CPU 사용률 테스트",
+      "SERVICE_NAME": "EMS(서비스)",
+      "THIS_WEEK": 344,
+      "LAST_WEEK": 859,
+      "INC": -59
+    }
+  ]
+}

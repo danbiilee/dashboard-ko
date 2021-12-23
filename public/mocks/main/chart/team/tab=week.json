@@ -1,0 +1,14 @@
+{
+  "metrics": [
+    {
+      "TEAM_NAME": "EMS팀",
+      "TROUBLE": 1,
+      "CRITICAL": 0
+    },
+    {
+      "TEAM_NAME": "정보보안팀",
+      "TROUBLE": 1,
+      "CRITICAL": 0
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "metrics": [
+    {
+      "TEAM_NAME": "EMS팀",
+      "ALARMSEVERITY": "경고",
+      "ALARM_NAME": "메모리 사용률",
+      "DAY": 268,
+      "CONDITIONLOGTEXT": "사용률 [81.1 % (> 70 %)]",
+      "IP": "192.168.233.131"
+    }
+  ]
+}

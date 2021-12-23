@@ -1,0 +1,64 @@
+{
+  "metrics": [
+    {
+      "TEAM_NAME": "제조서비스팀",
+      "TROUBLE": 0,
+      "CRITICAL": 1
+    },
+    {
+      "TEAM_NAME": "SCM서비스팀",
+      "TROUBLE": 0,
+      "CRITICAL": 1
+    },
+    {
+      "TEAM_NAME": "SmartFactory팀",
+      "TROUBLE": 1,
+      "CRITICAL": 0
+    },
+    {
+      "TEAM_NAME": "Infra팀",
+      "TROUBLE": 0,
+      "CRITICAL": 1
+    },
+    {
+      "TEAM_NAME": "제조서비스팀",
+      "TROUBLE": 1,
+      "CRITICAL": 0
+    },
+    {
+      "TEAM_NAME": "Architecture팀",
+      "TROUBLE": 1,
+      "CRITICAL": 0
+    },
+    {
+      "TEAM_NAME": "EMS팀",
+      "TROUBLE": 1,
+      "CRITICAL": 0
+    },
+    {
+      "TEAM_NAME": "정보보안팀",
+      "TROUBLE": 1,
+      "CRITICAL": 0
+    },
+    {
+      "TEAM_NAME": "Architecture팀",
+      "TROUBLE": 0,
+      "CRITICAL": 1
+    },
+    {
+      "TEAM_NAME": "SCM서비스팀",
+      "TROUBLE": 1,
+      "CRITICAL": 0
+    },
+    {
+      "TEAM_NAME": "SmartFactory팀",
+      "TROUBLE": 0,
+      "CRITICAL": 1
+    },
+    {
+      "TEAM_NAME": "건설/모터스서비스팀",
+      "TROUBLE": 0,
+      "CRITICAL": 1
+    }
+  ]
+}

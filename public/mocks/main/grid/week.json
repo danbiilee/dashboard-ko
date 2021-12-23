@@ -1,0 +1,19 @@
+{
+  "metrics": [
+    {
+      "ALARM_NAME": "CPU 사용률 테스트",
+      "SERVICE_NAME": "EMS(서비스)",
+      "CNT": 695
+    },
+    {
+      "ALARM_NAME": "Memory 사용률",
+      "SERVICE_NAME": "EMS(서비스)",
+      "CNT": 76
+    },
+    {
+      "ALARM_NAME": "CPU 사용률",
+      "SERVICE_NAME": "BENITUS(서비스데스크)",
+      "CNT": 1
+    }
+  ]
+}

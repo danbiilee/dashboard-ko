@@ -1,0 +1,44 @@
+{
+  "metrics": [
+    {
+      "SERVICE_NAME": "EMS(서비스)",
+      "TEAM_NAME": "제조서비스팀",
+      "CNT": 2
+    },
+    {
+      "SERVICE_NAME": "BENITUS(서비스데스크)",
+      "TEAM_NAME": "SmartFactory팀",
+      "CNT": 2
+    },
+    {
+      "SERVICE_NAME": "BENITUS(서비스데스크)",
+      "TEAM_NAME": "Architecture팀",
+      "CNT": 2
+    },
+    {
+      "SERVICE_NAME": "EMS(서비스)",
+      "TEAM_NAME": "SCM서비스팀",
+      "CNT": 2
+    },
+    {
+      "SERVICE_NAME": "BENITUS(서비스데스크)",
+      "TEAM_NAME": "Infra팀",
+      "CNT": 1
+    },
+    {
+      "SERVICE_NAME": "EMS(서비스)",
+      "TEAM_NAME": "정보보안팀",
+      "CNT": 1
+    },
+    {
+      "SERVICE_NAME": "BENITUS(서비스데스크)",
+      "TEAM_NAME": "건설/모터스서비스팀",
+      "CNT": 1
+    },
+    {
+      "SERVICE_NAME": "EMS(서비스)",
+      "TEAM_NAME": "EMS팀",
+      "CNT": 1
+    }
+  ]
+}

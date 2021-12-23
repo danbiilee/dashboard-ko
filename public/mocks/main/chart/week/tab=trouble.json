@@ -1,0 +1,53 @@
+{
+  "metrics": [
+    {
+      "WEEK": "수요일",
+      "THIS_CNT": 62,
+      "LAST_CNT": 192,
+      "THIS_WEEK": "2021-12-22",
+      "LAST_WEEK": "2021-12-15"
+    },
+    {
+      "WEEK": "화요일",
+      "THIS_CNT": 67,
+      "LAST_CNT": 278,
+      "THIS_WEEK": "2021-12-21",
+      "LAST_WEEK": "2021-12-14"
+    },
+    {
+      "WEEK": "월요일",
+      "THIS_CNT": 81,
+      "LAST_CNT": 217,
+      "THIS_WEEK": "2021-12-20",
+      "LAST_WEEK": "2021-12-13"
+    },
+    {
+      "WEEK": "일요일",
+      "THIS_CNT": 68,
+      "LAST_CNT": 92,
+      "THIS_WEEK": "2021-12-19",
+      "LAST_WEEK": "2021-12-12"
+    },
+    {
+      "WEEK": "토요일",
+      "THIS_CNT": 88,
+      "LAST_CNT": 122,
+      "THIS_WEEK": "2021-12-18",
+      "LAST_WEEK": "2021-12-11"
+    },
+    {
+      "WEEK": "금요일",
+      "THIS_CNT": 34,
+      "LAST_CNT": 165,
+      "THIS_WEEK": "2021-12-17",
+      "LAST_WEEK": "2021-12-10"
+    },
+    {
+      "WEEK": "목요일",
+      "THIS_CNT": 21,
+      "LAST_CNT": 68,
+      "THIS_WEEK": "2021-12-16",
+      "LAST_WEEK": "2021-12-09"
+    }
+  ]
+}
