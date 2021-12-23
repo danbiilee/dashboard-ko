@@ -15,4 +15,7 @@ export const StyledInputGroup = styled.div`
     margin-right: 3.2rem;
     border-right: 2px solid #708c9d5c;
   }
+  button:last-of-type {
+    margin-left: 3.2rem;
+  }
 `;
