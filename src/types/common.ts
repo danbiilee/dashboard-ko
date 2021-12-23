@@ -21,3 +21,19 @@ export interface ChartTabQuery {
 }
 
 export type ChartParam = SearchInputs | ChartTabQuery;
+
+// Grid
+export interface GridData {
+  NO?: number;
+  SERVICE_NAME?: string;
+  TEAM_NAME?: string;
+  CNT?: number;
+  ALARMSEVERITY?: string;
+  ALARM_NAME?: string;
+  DAY?: number;
+  THIS_WEEK?: number;
+  LAST_WEEK?: number;
+  INC?: number;
+  CONDITIONLOGTEXT?: string;
+  IP?: string;
+}
