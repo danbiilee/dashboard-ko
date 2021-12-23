@@ -4,6 +4,7 @@ import webpack, { Configuration as WebpackConfiguration } from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 interface Configuration extends WebpackConfiguration {
@@ -94,6 +95,18 @@ const config: Configuration = {
       // },
     }),
     new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: './public/lib',
+          to: './lib',
+        },
+        {
+          from: './public/config',
+          to: './config',
+        },
+      ],
+    }),
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
