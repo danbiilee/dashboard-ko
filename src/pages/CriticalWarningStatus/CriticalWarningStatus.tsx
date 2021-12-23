@@ -4,6 +4,8 @@ import { CriticalWarningContentBox as ContentBox } from '@layouts/ContentBox';
 import InputGroup from '@layouts/InputGroup';
 import { SearchInputs } from '@customTypes/common';
 import moment from 'moment';
+import Chart from '@components/Chart';
+
 const CriticalWarningStatus = () => {
   const [searchInputs, setSearchInputs] = useState<SearchInputs>({
     team: 'total',
@@ -16,7 +18,7 @@ const CriticalWarningStatus = () => {
     <Main type="status">
       <InputGroup searchInputs={searchInputs} setSearchInputs={setSearchInputs} />
       <ContentBox>
-        <div>test</div>
+        <Chart type="search" param={searchInputs} />
       </ContentBox>
     </Main>
   );
