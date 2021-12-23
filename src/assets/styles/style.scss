@@ -16,8 +16,9 @@ html {
 #app {
   display: flex;
   flex-direction: column;
+  min-width: 1900px;
   height: 100vh;
   background-color: #0d1a21;
   color: #fff;
-  font-size: 2.8rem;
+  font-size: 2rem;
 }
