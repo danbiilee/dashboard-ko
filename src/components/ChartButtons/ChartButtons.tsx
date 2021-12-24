@@ -4,7 +4,7 @@ import { Tab, KeyOfTabs } from '@customTypes/common';
 import IconPlay from '@images/btn-play.png';
 import IconPause from '@images/btn-pause.png';
 
-interface ButtonsProps {
+export interface ButtonsProps {
   type: KeyOfTabs;
   tabs: Tab[];
   isPlay: boolean;
