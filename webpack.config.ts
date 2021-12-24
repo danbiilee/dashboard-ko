@@ -22,12 +22,6 @@ const config: Configuration = {
     static: { directory: path.join(__dirname, 'public') },
     historyApiFallback: true,
     compress: true,
-    // proxy: {
-    //   '/api/': {
-    //     target: 'http://localhost:3095',
-    //     changeOrigins: true,
-    //   }
-    // }
   },
   entry: {
     app: './src/index.tsx',
