@@ -15,6 +15,15 @@ export interface MappedRelation {
   selected: boolean;
 }
 
+// Tab
+export type KeyOfTabs = 'week' | 'team';
+export interface Tab {
+  id: number;
+  value: string;
+  title: string;
+  selected: boolean;
+}
+
 // Chart
 export interface ChartTabQuery {
   tab: string;
