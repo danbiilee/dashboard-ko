@@ -30,6 +30,24 @@ export interface ChartTabQuery {
 }
 
 export type ChartParam = SearchInputs | ChartTabQuery;
+export interface ChartData {
+  TEAM_NAME?: string;
+  A?: number;
+  B?: number;
+  TROUBLE?: number;
+  CRITICAL?: number;
+  WEEK?: string;
+  THIS_WEEK?: string;
+  THIS_CNT?: number;
+  LAST_CNT?: number;
+  DAY?: string;
+}
+export interface TeamName {
+  id: number;
+  value: string;
+  title: string;
+  order: number;
+}
 
 // Grid
 export interface GridData {

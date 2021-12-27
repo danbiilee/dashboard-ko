@@ -55,7 +55,7 @@ const Chart: React.FC<ChartProps> = ({ type, param }) => {
   );
 };
 
-const areEqual = (prevProps: any, nextProps: any): boolean => {
+const areEqual = (prevProps: ChartProps, nextProps: ChartProps): boolean => {
   return dequal(prevProps, nextProps);
 };
 
