@@ -27,8 +27,7 @@ const Select: React.FC<SelectProps> = ({ type, searchInputs, mappedNames, handle
         value={searchInputs[type]}
         suffixIcon={<img src={ArrowBox} alt="picker suffix" />}
         onChange={onChange}
-        listItemHeight={10}
-        listHeight={250}
+        listHeight={305}
       >
         {type === 'team'
           ? mappedNames?.map((data, i) => (

@@ -11,7 +11,8 @@ export const StyledSelect = styled.div`
       width: 38rem;
     }
   }
-  .ant-select-selection-item {
+  .ant-select-selector,
+  .ant-select-selector * {
     cursor: pointer;
   }
   .ant-select:not(.ant-select-customize-input) .ant-select-selector {
