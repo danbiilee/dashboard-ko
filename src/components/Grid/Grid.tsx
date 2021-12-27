@@ -39,7 +39,7 @@ const columns: IndexColumns = {
 };
 
 const Grid: React.FC<GridProps> = ({ type }) => {
-  let { data: dataSource, isLoading, isError } = useGrid(type);
+  let { data, isLoading, isError } = useGrid(type);
 
   if (isLoading) {
     return <Indicator isLoading={isLoading} size="default" />;
@@ -49,7 +49,7 @@ const Grid: React.FC<GridProps> = ({ type }) => {
   }
   return (
     <>
-      <StyledGrid type={type} length={dataSource.length}>
+      <StyledGrid type={type} length={data.length}>
         <div className="thead">
           <div className="row">
             {(columns[type] as string[]).map((column, i) => (
@@ -60,12 +60,16 @@ const Grid: React.FC<GridProps> = ({ type }) => {
           </div>
         </div>
         <div className="tbody">
-          {!dataSource.length ? (
+          {!data.length ? (
             <Indicator isEmpty={true} />
           ) : (
-            dataSource.map((data: GridData) => (
-              <div key={data.NO} className="row" onClick={() => useEmsUrl(data.IP!, data?.ALARM_NAME)}>
-                {Object.entries(data).map(([key, value], i) => {
+            data.map((rowData: GridData) => (
+              <div
+                key={rowData.NO}
+                className="row"
+                // onClick={() => useEmsUrl(rowData.IP!, rowData?.ALARM_NAME)}
+              >
+                {Object.entries(rowData).map(([key, value], i) => {
                   if (key === 'IP') return;
                   return (
                     <div
