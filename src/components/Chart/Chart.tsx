@@ -7,6 +7,7 @@ import { ChartParam } from '@customTypes/common';
 import { useChart } from '@hooks/useChart';
 import { useGetCategories, useGetSeries } from '@hooks/useChartOptions';
 import Indicator from '@components/Indicator';
+import { dequal } from 'dequal';
 
 export interface ChartProps {
   type: keyof typeof chartOptions;
@@ -54,4 +55,8 @@ const Chart: React.FC<ChartProps> = ({ type, param }) => {
   );
 };
 
-export default Chart;
+const areEqual = (prevProps: any, nextProps: any): boolean => {
+  return dequal(prevProps, nextProps);
+};
+
+export default React.memo(Chart, areEqual);

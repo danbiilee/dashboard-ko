@@ -95,4 +95,4 @@ const Grid: React.FC<GridProps> = ({ type }) => {
   );
 };
 
-export default Grid;
+export default React.memo(Grid);
