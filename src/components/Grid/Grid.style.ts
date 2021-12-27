@@ -32,7 +32,7 @@ export const StyledGrid = styled.div<StyledGridProps>`
           case 'notTaken':
             return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
           case 'prepare':
-            return `4.8rem 15.5rem minmax(17.5rem, auto) 6rem 6rem minmax(auto, ${
+            return `4.8rem 15.5rem minmax(17.4rem, auto) 6rem 6rem minmax(auto, ${
               length > 5 ? 'calc(7.9rem + 6px)' : '7.9rem'
             })`;
         }
@@ -54,7 +54,7 @@ export const StyledGrid = styled.div<StyledGridProps>`
           case 'notTaken':
             return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
           case 'prepare':
-            return '4.8rem 15.5rem minmax(17.5rem, auto) 6rem 6rem minmax(auto, 7.9rem)';
+            return '4.8rem 15.5rem minmax(17.4rem, auto) 6rem 6rem minmax(auto, 7.9rem)';
         }
       }};
     }
