@@ -34,6 +34,7 @@ const config: Configuration = {
       '@layouts': path.resolve(__dirname, 'src/layouts'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@contexts': path.resolve(__dirname, 'src/contexts'),
       '@customUtils': path.resolve(__dirname, 'src/utils'),
       '@customTypes': path.resolve(__dirname, 'src/types'),
     },
