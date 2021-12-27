@@ -17,7 +17,7 @@ export const useGrid = (path: string) => {
     url = `${ENV.API_URL[mode]}/${ENV.API_REST_URI.GRID}/${path}`;
   }
 
-  const { data, error } = useSWR(url, fetcher, { refreshInterval: ENV.REFRESH_INTERVAL_TIME });
+  const { data, error } = useSWR(url, fetcher, ENV.SWR_CONFIG.MAIN);
 
   return {
     data,

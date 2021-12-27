@@ -1,7 +1,6 @@
 window.ENV = {
   IS_LOCAL: false,
-  EMS_URL: 'http://121.78.87.196',
-  // EMS_URL: 'http://192.168.233.173',
+  EMS_URL: 'http://192.168.233.173', // 121.78.87.196
   EMS_REST_URI: {
     token: 'rest/token/getPublic',
     alarm: 'management/alarmconsolemashup',
@@ -21,8 +20,17 @@ window.ENV = {
     MAPPING: 'search/relation',
   },
   TAB_ROLLING_TIME: 5000, // 5초
-  REFRESH_INTERVAL_TIME: 180000, // 3분
-  ERROR_RETRY_COUNT: 0,
+  SWR_CONFIG: {
+    ERROR_RETRY_COUNT: 1,
+    MAIN: {
+      refreshInterval: 180000,
+      dedupingInterval: 180000,
+    },
+    SEARCH: {
+      refreshInterval: 0,
+      dedupingInterval: 2000,
+    },
+  },
 };
 
 window.TEAM_NAME = [

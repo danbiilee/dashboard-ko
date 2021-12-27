@@ -36,9 +36,7 @@ export const useChart = (type: string, path?: string, param?: ChartParam) => {
     }
   }
 
-  const { data, error } = useSWR([url, path], fetcher, {
-    refreshInterval: type === 'search' ? 0 : ENV.REFRESH_INTERVAL_TIME,
-  });
+  const { data, error } = useSWR([url, path], fetcher, ENV.SWR_CONFIG[type.toUpperCase()]);
 
   return {
     data,

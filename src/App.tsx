@@ -13,7 +13,7 @@ const App = () => {
     <RelationProvider>
       <SWRConfig
         value={{
-          errorRetryCount: ENV.ERROR_RETRY_COUNT,
+          errorRetryCount: ENV.SWR_CONFIG.ERROR_RETRY_COUNT,
         }}
       >
         <Header />
