@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { StyledInputGroup } from './InputGroup.style';
-import { SearchInputs, MappedRelation } from '@customTypes/common';
+import { SearchInputs } from '@customTypes/common';
 import Label from '@components/Label';
 import Select from '@components/Select';
 import RangePicker from '@components/RangePicker';
 import { ExcelButton, SearchButton } from '@components/Button';
-import { useRelation } from '@hooks/useRelation';
+import { useMappedNames, useSetMappedNames } from '@contexts/Relation';
 
 export interface InputGroupProps {
   searchInputs: SearchInputs;
@@ -13,27 +13,21 @@ export interface InputGroupProps {
 }
 
 const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }) => {
-  const { data, isLoading, isError } = useRelation();
-  const [mappedNames, setMappedNames] = useState<MappedRelation[]>();
+  const mappedNames = useMappedNames();
+  const setMappedNames = useSetMappedNames();
   const [localInputs, setLocalInputs] = useState<SearchInputs>(searchInputs);
 
   const handleChange = (name: string, value: string) => {
     if (name === 'team') {
-      setMappedNames((mapped) => {
-        const tValue = value === 'total' ? '전체' : value;
-        return mapped?.map((map) => (map.team === tValue ? { ...map, selected: true } : { ...map, selected: false }));
-      });
+      const tValue = value === 'total' ? '전체' : value;
+      const mapped = mappedNames?.map((map) =>
+        map.team === tValue ? { ...map, selected: true } : { ...map, selected: false },
+      )!;
+      setMappedNames(mapped);
     }
 
     setLocalInputs((localInputs) => ({ ...localInputs, [name]: value }));
   };
-
-  useEffect(() => {
-    if (isLoading || isError) {
-      return;
-    }
-    setMappedNames(data);
-  }, [data, isLoading, isError]);
 
   useEffect(() => {
     if (localInputs.service === 'total') {

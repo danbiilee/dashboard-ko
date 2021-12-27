@@ -1,7 +1,6 @@
-import useSWR from 'swr';
 import { MappedRelation, Relation } from '@customTypes/common';
 
-const getMappedNames = (data: Relation[]) => {
+export const getMappedNames = (data: Relation[]) => {
   const mapped: MappedRelation[] = [];
   const services = new Set<string>();
 
@@ -32,13 +31,16 @@ const getMappedNames = (data: Relation[]) => {
   return mapped;
 };
 
-const fetcher = async (url: string) => {
+const fetcher = async (
+  url: string,
+  setMappedNames: React.Dispatch<React.SetStateAction<MappedRelation[] | undefined>>,
+) => {
   const res = await fetch(url);
   const jsonData = await res.json();
-  return getMappedNames(jsonData.metrics);
+  setMappedNames(getMappedNames(jsonData.metrics));
 };
 
-export const useRelation = () => {
+export const useRelation = (setMappedNames: React.Dispatch<React.SetStateAction<MappedRelation[] | undefined>>) => {
   let url;
 
   if (ENV.IS_LOCAL) {
@@ -48,11 +50,5 @@ export const useRelation = () => {
     url = `${ENV.API_URL[mode]}/${ENV.API_REST_URI.MAPPING}`;
   }
 
-  const { data, error } = useSWR(url, fetcher);
-
-  return {
-    data,
-    isLoading: !data && !error,
-    isError: error,
-  };
+  fetcher(url, setMappedNames);
 };
