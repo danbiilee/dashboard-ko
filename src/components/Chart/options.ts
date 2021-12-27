@@ -14,6 +14,16 @@ const commonOptions = {
   title: {
     text: undefined,
   },
+  tooltip: {
+    shared: true,
+    useHTML: true,
+    borderColor: '#5470805C',
+    borderWidth: 2,
+    style: {
+      fontSize: '1.3rem',
+      fontWeight: 'bold',
+    },
+  },
   legend: {
     align: 'right',
     verticalAlign: 'top',
@@ -75,6 +85,57 @@ const commonOptions = {
   },
 };
 
+const defaultTooltipFormatter = {
+  headerFormat: '<div style="padding-bottom: 0.5rem; border-bottom: 1px solid;">{point.key}</div>',
+  pointFormatter: function (this: Highcharts.Point) {
+    const { y, series } = this;
+    return `<div style='display: flex; align-items: center; margin-top: 0.8rem; z-index: 1;'>
+                <span style='width: 1.2rem; height: 1.2rem; margin-right: 0.5rem; background-color: ${
+                  this.color
+                }'></span>
+                <span style='margin-right: 0.5rem;'>${series.name}</span>
+                <span style='padding-top: 0.2rem; font-size: 1.4rem;'>${y ? y.toLocaleString() : y}</span>
+              </div>`;
+  },
+};
+
+const momentTooltipFormatter = (type: string) => {
+  let format = '';
+
+  switch (type) {
+    case 'week':
+      format = 'dd';
+      break;
+    case 'time':
+      format = 'YYYY-MM-DD HH:mm';
+      break;
+    case 'search':
+      format = 'YYYY년 MM월';
+      break;
+  }
+
+  return {
+    formatter: function (this: Highcharts.TooltipFormatterContextObject) {
+      const points = this.points as Highcharts.TooltipFormatterContextObject[];
+      let result = `<div style="padding-bottom: 0.5rem; border-bottom: 1px solid;">${moment(points[0]?.x)
+        .locale('ko')
+        .format(format)}</div>`;
+
+      for (let { color, y, series } of this.points as Highcharts.TooltipFormatterContextObject[]) {
+        const { name } = series;
+        if (name === 'TOTAL') continue;
+        result += `<div style='display: flex; align-items: center; margin-top: 0.8rem; z-index: 1;'>
+                    <span style='width: 1.4rem; height: 1.4rem; margin-right: 0.5rem; background-color: ${color}'></span>
+                    <span style='margin-right: 0.5rem;'>${name}</span>
+                    <span style='padding-top: 0.2rem; font-size: 1.8rem;'>${y ? y.toLocaleString() : y}</span>
+                  </div>`;
+      }
+
+      return result;
+    },
+  };
+};
+
 const obsOptions = {
   ...commonOptions,
   chart: {
@@ -82,23 +143,8 @@ const obsOptions = {
     marginBottom: 25,
   },
   tooltip: {
-    shared: true,
-    useHTML: true,
-    borderColor: '#5470805C',
-    borderWidth: 2,
-    style: {
-      fontSize: '1.3rem',
-      fontWeight: 'bold',
-    },
-    headerFormat: '<div style="padding-bottom: 0.5rem; border-bottom: 1px solid;">{point.key}</div>',
-    pointFormatter: function (this: Highcharts.Point) {
-      const { y, series } = this;
-      return `<div style='display: flex; align-items: center; margin-top: 0.8rem;'>
-                <span style='width: 1.2rem; height: 1.2rem; margin-right: 0.5rem; background-color: ${this.color}'></span>
-                <span style='margin-right: 0.5rem;'>${series.name}</span>
-                <span style='padding-top: 0.2rem; font-size: 1.4rem;'>${y}</span>
-              </div>`;
-    },
+    ...commonOptions.tooltip,
+    ...defaultTooltipFormatter,
   },
   xAxis: {
     categories: [],
@@ -149,23 +195,8 @@ const teamOptions = {
     marginBottom: 42, // 25
   },
   tooltip: {
-    shared: true,
-    useHTML: true,
-    borderColor: '#5470805C',
-    borderWidth: 2,
-    style: {
-      fontSize: '1.3rem',
-      fontWeight: 'bold',
-    },
-    headerFormat: '<div style="padding-bottom: 0.5rem; border-bottom: 1px solid;">{point.key}</div>',
-    pointFormatter: function (this: Highcharts.Point) {
-      const { y, series } = this;
-      return `<div style='display: flex; align-items: center; margin-top: 0.8rem;'>
-                <span style='width: 1.2rem; height: 1.2rem; margin-right: 0.5rem; background-color: ${this.color}'></span>
-                <span style='margin-right: 0.5rem;'>${series.name}</span>
-                <span style='padding-top: 0.2rem; font-size: 1.4rem;'>${y}</span>
-              </div>`;
-    },
+    ...commonOptions.tooltip,
+    ...defaultTooltipFormatter,
   },
   xAxis: {
     categories: [],
@@ -218,32 +249,8 @@ const weekOptions = {
     marginBottom: 40,
   },
   tooltip: {
-    shared: true,
-    useHTML: true,
-    borderColor: '#5470805C',
-    borderWidth: 2,
-    style: {
-      fontSize: '1.3rem',
-      fontWeight: 'bold',
-    },
-    formatter: function (this: Highcharts.TooltipFormatterContextObject) {
-      const points = this.points as Highcharts.TooltipFormatterContextObject[];
-      let result = `<div style="padding-bottom: 0.5rem; border-bottom: 1px solid;">${moment(points[0]?.x)
-        .locale('ko')
-        .format('dd')}</div>`;
-
-      for (let { color, y, series } of this.points as Highcharts.TooltipFormatterContextObject[]) {
-        const { name } = series;
-        if (name === 'TOTAL') continue;
-        result += `<div style='display: flex; align-items: center; margin-top: 0.8rem;'>
-                    <span style='width: 1.4rem; height: 1.4rem; margin-right: 0.5rem; background-color: ${color}'></span>
-                    <span style='margin-right: 0.5rem;'>${name}</span>
-                    <span style='padding-top: 0.2rem; font-size: 1.8rem;'>${y}</span>
-                  </div>`;
-      }
-
-      return result;
-    },
+    ...commonOptions.tooltip,
+    ...momentTooltipFormatter('week'),
   },
   xAxis: {
     categories: [],
@@ -302,32 +309,8 @@ const timeOptions = {
     x: 25,
   },
   tooltip: {
-    shared: true,
-    useHTML: true,
-    borderColor: '#5470805C',
-    borderWidth: 2,
-    style: {
-      fontSize: '1.3rem',
-      fontWeight: 'bold',
-    },
-    formatter: function (this: Highcharts.TooltipFormatterContextObject) {
-      const points = this.points as Highcharts.TooltipFormatterContextObject[];
-      let result = `<div style="padding-bottom: 0.5rem; border-bottom: 1px solid;">${moment(points[0]?.x)
-        .locale('ko')
-        .format('YYYY-MM-DD HH:mm')}</div>`;
-
-      for (let { color, y, series } of this.points as Highcharts.TooltipFormatterContextObject[]) {
-        const { name } = series;
-        if (name === 'TOTAL') continue;
-        result += `<div style='display: flex; align-items: center; margin-top: 0.8rem;'>
-                    <span style='width: 1.4rem; height: 1.4rem; margin-right: 0.5rem; background-color: ${color}'></span>
-                    <span style='margin-right: 0.5rem;'>${name}</span>
-                    <span style='padding-top: 0.2rem; font-size: 1.8rem;'>${y}</span>
-                  </div>`;
-      }
-
-      return result;
-    },
+    ...commonOptions.tooltip,
+    ...momentTooltipFormatter('time'),
   },
   xAxis: {
     categories: [],
@@ -390,32 +373,12 @@ const searchOptions = {
     },
   },
   tooltip: {
-    shared: true,
-    useHTML: true,
-    borderColor: '#5470805C',
-    borderWidth: 2,
+    ...commonOptions.tooltip,
     style: {
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
+      ...commonOptions.tooltip.style,
+      fontSize: '1.6rem',
     },
-    formatter: function (this: Highcharts.TooltipFormatterContextObject) {
-      const points = this.points as Highcharts.TooltipFormatterContextObject[];
-      let result = `<div style="padding-bottom: 0.5rem; border-bottom: 1px solid;">${moment(points[0]?.x)
-        .locale('ko')
-        .format('YYYY년 MM월')}</div>`;
-
-      for (let { color, y, series } of this.points as Highcharts.TooltipFormatterContextObject[]) {
-        const { name } = series;
-        if (name === 'TOTAL') continue;
-        result += `<div style='display: flex; align-items: center; margin-top: 0.8rem;'>
-                    <span style='width: 1.4rem; height: 1.4rem; margin-right: 0.5rem; background-color: ${color}'></span>
-                    <span style='margin-right: 0.5rem;'>${name}</span>
-                    <span style='padding-top: 0.2rem; font-size: 1.8rem;'>${y}</span>
-                  </div>`;
-      }
-
-      return result;
-    },
+    ...momentTooltipFormatter('search'),
   },
   xAxis: {
     categories: [],
