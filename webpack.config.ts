@@ -20,7 +20,7 @@ const isDevelopment = process.env['NODE_ENV'] !== 'production';
 const config: Configuration = {
   name: 'setup-test',
   mode: isDevelopment ? 'development' : 'production',
-  devtool: isDevelopment ? 'hidden-source-map' : 'eval',
+  devtool: isDevelopment ? 'inline-source-map' : false,
   devServer: {
     port: 4000,
     static: { directory: path.join(__dirname, 'public') },
@@ -109,7 +109,12 @@ const config: Configuration = {
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name]-[contenthash].css',
     }),
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ko/),
   ],
+  performance: {
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
   optimization: {
     minimizer: [
       new TerserPlugin({
@@ -132,6 +137,10 @@ const config: Configuration = {
         },
       }),
     ],
+    splitChunks: {
+      minSize: 250000,
+      maxSize: 512000,
+    },
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
