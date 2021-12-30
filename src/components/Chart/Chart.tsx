@@ -5,9 +5,8 @@ import { StyledChart } from './Chart.style';
 import { chartOptions } from '@components/Chart/options';
 import { ChartParam } from '@customTypes/common';
 import { useChart } from '@hooks/useChart';
-import { useGetCategories, useGetSeries } from '@hooks/useChartOptions';
 import Indicator from '@components/Indicator';
-import { areEqual } from '@customUtils/index';
+import { areEqual, getCategories, getSeries } from '@customUtils/index';
 
 export interface ChartProps {
   type: keyof typeof chartOptions;
@@ -29,8 +28,8 @@ const Chart: React.FC<ChartProps> = ({ type, param }) => {
     setOptions((options) => {
       let opt: any = {};
       opt = { ...options };
-      opt.xAxis.categories = useGetCategories(type, data);
-      opt.series = useGetSeries(type, data, options.series);
+      opt.xAxis.categories = getCategories(type, data);
+      opt.series = getSeries(type, data, options.series);
       return opt;
     });
   }, [data]);
