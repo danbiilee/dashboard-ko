@@ -7,6 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import moment from 'moment';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
@@ -67,7 +68,7 @@ const config: Configuration = {
       },
       {
         test: /\.(p|s)?css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
         test: /\.(svg|png|jpe?g|gif|ico)$/i,
@@ -102,6 +103,9 @@ const config: Configuration = {
           to: './config',
         },
       ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: isDevelopment ? '[name].css' : '[name]-[contenthash].css',
     }),
   ],
   output: {
