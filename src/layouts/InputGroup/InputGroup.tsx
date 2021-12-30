@@ -6,6 +6,12 @@ import Select from '@components/Select';
 import RangePicker from '@components/RangePicker';
 import { ExcelButton, SearchButton } from '@components/Button';
 import { useMappedNames, useSetMappedNames } from '@contexts/Relation';
+import { Alert } from 'antd';
+
+export const defaultAlertState = {
+  status: false,
+  message: '',
+};
 
 export interface InputGroupProps {
   searchInputs: SearchInputs;
@@ -16,6 +22,7 @@ const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }
   const mappedNames = useMappedNames();
   const setMappedNames = useSetMappedNames();
   const [localInputs, setLocalInputs] = useState<SearchInputs>(searchInputs);
+  const [alert, setAlert] = useState(defaultAlertState);
 
   const handleChange = (name: string, value: string) => {
     if (name === 'team') {
@@ -36,6 +43,13 @@ const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }
     setLocalInputs((localInputs) => ({ ...localInputs, service: 'total' }));
   }, [localInputs.team]);
 
+  useEffect(() => {
+    if (localInputs.team === 'total' && localInputs.service === 'total') {
+      return;
+    }
+    setAlert(defaultAlertState);
+  }, [localInputs.team, localInputs.service]);
+
   return (
     <StyledInputGroup>
       <Label name="팀명">
@@ -48,7 +62,8 @@ const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }
         <RangePicker searchInputs={localInputs} handleChange={handleChange} />
       </Label>
       <SearchButton searchInputs={localInputs} setSearchInputs={setSearchInputs} />
-      <ExcelButton searchInputs={localInputs} />
+      <ExcelButton searchInputs={localInputs} setAlert={setAlert} />
+      {alert.status && <Alert message="Warning" description={alert.message} type="warning" showIcon closable />}
     </StyledInputGroup>
   );
 };

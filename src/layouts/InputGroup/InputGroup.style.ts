@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledInputGroup = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,5 +18,34 @@ export const StyledInputGroup = styled.div`
   }
   button:last-of-type {
     margin-left: 3.2rem;
+  }
+  .ant-alert {
+    position: absolute;
+    top: -1rem;
+    font-size: 2rem;
+  }
+  .ant-alert-warning {
+    padding: 2rem 2.5rem 2.5rem 3rem;
+    border: 1px solid #f5c010;
+    .ant-alert-icon {
+      margin-top: 0.1rem;
+      color: #f5c010;
+      font-size: 3rem;
+    }
+    .ant-alert-message {
+      margin-bottom: 0.8rem;
+      font-size: 2.1rem;
+    }
+    .ant-alert-description {
+      font-size: 1.8rem;
+    }
+    .ant-alert-close-icon {
+      margin-left: 15rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      * {
+        cursor: pointer;
+      }
+    }
   }
 `;
