@@ -43,13 +43,6 @@ const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }
     setLocalInputs((localInputs) => ({ ...localInputs, service: 'total' }));
   }, [localInputs.team]);
 
-  useEffect(() => {
-    if (localInputs.team === 'total' && localInputs.service === 'total') {
-      return;
-    }
-    setAlert(defaultAlertState);
-  }, [localInputs.team, localInputs.service]);
-
   return (
     <StyledInputGroup>
       <Label name="팀명">
@@ -63,7 +56,16 @@ const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }
       </Label>
       <SearchButton searchInputs={localInputs} setSearchInputs={setSearchInputs} />
       <ExcelButton searchInputs={localInputs} setAlert={setAlert} />
-      {alert.status && <Alert message="Warning" description={alert.message} type="warning" showIcon closable />}
+      {alert.status && (
+        <Alert
+          message="Warning"
+          description={alert.message}
+          type="warning"
+          showIcon
+          closable
+          afterClose={() => setAlert((alert) => ({ ...alert, status: false }))}
+        />
+      )}
     </StyledInputGroup>
   );
 };
