@@ -15,4 +15,4 @@ const SearchButton: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs
   );
 };
 
-export default SearchButton;
+export default React.memo(SearchButton);

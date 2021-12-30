@@ -3,6 +3,7 @@ import { StyledSelect } from './Select.style';
 import ArrowBox from '@images/btn-dropdown.png';
 import { SearchInputs, MappedRelation } from '@customTypes/common';
 import { Select as A_Select } from 'antd';
+import { areEqual } from '@customUtils/index';
 
 const { Option } = A_Select;
 
@@ -45,4 +46,4 @@ const Select: React.FC<SelectProps> = ({ type, searchInputs, mappedNames, handle
   );
 };
 
-export default Select;
+export default React.memo(Select, areEqual);

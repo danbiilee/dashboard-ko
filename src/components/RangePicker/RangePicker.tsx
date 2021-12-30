@@ -94,4 +94,4 @@ const RangePicker: React.FC<RangePickerProps> = ({ searchInputs, handleChange })
   );
 };
 
-export default RangePicker;
+export default React.memo(RangePicker);

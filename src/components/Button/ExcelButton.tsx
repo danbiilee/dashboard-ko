@@ -36,4 +36,4 @@ const ExcelButton: React.FC<ExcelButtonProps> = ({ searchInputs, setAlert }) => 
   );
 };
 
-export default ExcelButton;
+export default React.memo(ExcelButton);

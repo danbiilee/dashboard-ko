@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { StyledInputGroup } from './InputGroup.style';
 import { SearchInputs } from '@customTypes/common';
 import Label from '@components/Label';
@@ -24,17 +24,20 @@ const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }
   const [localInputs, setLocalInputs] = useState<SearchInputs>(searchInputs);
   const [alert, setAlert] = useState(defaultAlertState);
 
-  const handleChange = (name: string, value: string) => {
-    if (name === 'team') {
-      const tValue = value === 'total' ? '전체' : value;
-      const mapped = mappedNames?.map((map) =>
-        map.team === tValue ? { ...map, selected: true } : { ...map, selected: false },
-      )!;
-      setMappedNames(mapped);
-    }
+  const handleChange = useCallback(
+    (name: string, value: string) => {
+      if (name === 'team') {
+        const tValue = value === 'total' ? '전체' : value;
+        const mapped = mappedNames?.map((map) =>
+          map.team === tValue ? { ...map, selected: true } : { ...map, selected: false },
+        )!;
+        setMappedNames(mapped);
+      }
 
-    setLocalInputs((localInputs) => ({ ...localInputs, [name]: value }));
-  };
+      setLocalInputs((localInputs) => ({ ...localInputs, [name]: value }));
+    },
+    [mappedNames],
+  );
 
   useEffect(() => {
     if (localInputs.service === 'total') {
