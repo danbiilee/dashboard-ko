@@ -5,7 +5,8 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
-// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import moment from 'moment';
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
@@ -118,7 +119,12 @@ if (isDevelopment && config.plugins) {
 }
 if (!isDevelopment && config.plugins) {
   config.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
-  // config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));
+  config.plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: `bundle-report-${moment().format('YYYY-MM-DD-HH-mm-ss')}.html`,
+    }),
+  );
 }
 
 export default config;
