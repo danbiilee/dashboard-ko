@@ -140,7 +140,7 @@ const obsOptions = {
   ...commonOptions,
   chart: {
     ...commonOptions.chart,
-    marginBottom: 25,
+    marginBottom: 42, // 25
   },
   tooltip: {
     ...commonOptions.tooltip,
@@ -150,13 +150,14 @@ const obsOptions = {
     categories: [],
     labels: {
       useHTML: true,
-      y: 20,
+      y: 8, // 20
       style: {
         color: '#BDC1D1',
         fontSize: '1rem',
       },
       formatter: function (this: Highcharts.AxisLabelsFormatterContextObject) {
-        return `<span style='display: inline-block; max-width: 3.6rem; overflow: hidden; text-overflow: ellipsis; white-space:nowrap;'>${this.value}</span>`;
+        // return `<span style='display: inline-block; max-width: 3.6rem; overflow: hidden; text-overflow: ellipsis; white-space:nowrap;'>${this.value}</span>`;
+        return `<span style='display: inline-block; max-width: 5rem; overflow: hidden; text-overflow: ellipsis; white-space:nowrap;'>${this.value}</span>`;
       },
     },
     lineColor: '#5470805C',
@@ -202,8 +203,7 @@ const teamOptions = {
     categories: [],
     labels: {
       useHTML: true,
-      // y: 20,
-      y: 8,
+      y: 8, // 20
       style: {
         color: '#BDC1D1',
         fontSize: '1rem',
