@@ -90,8 +90,8 @@ window.TEAM_NAME = [
   },
   {
     id: 9,
-    value: 'SmartFactory팀',
-    title: 'SmartFactory팀',
+    value: 'Smart Factory팀',
+    title: 'Smart Factory팀',
     order: 9,
   },
   {
