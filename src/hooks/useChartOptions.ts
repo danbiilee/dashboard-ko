@@ -1,7 +1,7 @@
 import { ChartData, TeamName } from '@customTypes/common';
 
 const getTeamNames = () => {
-  return TEAM_NAME.filter((tn: TeamName) => tn.title !== '전체').map((tn: TeamName) => tn.title);
+  return TEAM_NAME.sort((a: TeamName, b: TeamName) => a.order - b.order).map((tn: TeamName) => tn.title);
 };
 
 export const useGetCategories = (type: string, data: ChartData[]) => {

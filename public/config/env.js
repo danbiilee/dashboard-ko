@@ -35,12 +35,6 @@ window.ENV = {
 
 window.TEAM_NAME = [
   {
-    id: 0,
-    value: 'total',
-    title: '전체',
-    order: 0,
-  },
-  {
     id: 1,
     value: 'SmartWork팀',
     title: 'SmartWork팀',
