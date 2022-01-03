@@ -8,7 +8,7 @@ window.ENV = {
   API_URL: {
     local: 'http://localhost:4000/mocks',
     development: 'http://192.168.10.34:9001/kolonAlarm-service',
-    production: 'http://192.168.10.34:9001/kolonAlarm-service',
+    production: 'http://kmonboard.kolon.com:8882/kolonAlarm-service',
   },
   API_REST_URI: {
     GRID: 'main/grid',
