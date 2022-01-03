@@ -28,12 +28,12 @@ export const StyledGrid = styled.div<StyledGridProps>`
           case 'month':
           case 'week':
           default:
-            return `4.8rem 22.3rem minmax(21.8rem, auto) minmax(auto, ${length > 5 ? 'calc(8.3rem + 6px)' : '8.5rem'})`;
+            return `4.8rem 22.3rem minmax(21.8rem, auto) minmax(auto, ${length > 5 ? 'calc(8.3rem + 6px)' : '8.3rem'})`;
           case 'notTaken':
             return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
           case 'prepare':
-            return `4.8rem 15.5rem minmax(17.4rem, auto) 6rem 6rem minmax(auto, ${
-              length > 5 ? 'calc(7.9rem + 6px)' : '7.9rem'
+            return `4.6rem 15.5rem minmax(16.5rem, auto) 6rem 6rem minmax(auto, ${
+              length > 5 ? 'calc(9rem + 6px)' : '9rem'
             })`;
         }
       }};
@@ -54,7 +54,7 @@ export const StyledGrid = styled.div<StyledGridProps>`
           case 'notTaken':
             return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
           case 'prepare':
-            return '4.8rem 15.5rem minmax(17.4rem, auto) 6rem 6rem minmax(auto, 7.9rem)';
+            return '4.6rem 15.5rem minmax(16.5rem, auto) 6rem 6rem minmax(auto, 9rem)';
         }
       }};
     }
