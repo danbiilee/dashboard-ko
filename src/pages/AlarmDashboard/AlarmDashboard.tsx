@@ -4,7 +4,7 @@ import { AlarmContentBox as ContentBox } from '@layouts/ContentBox';
 import Grid from '@components/Grid';
 import Chart from '@components/Chart';
 import TabsChart from '@components/TabsChart';
-import { tabsData, playTabsData, selectedTabData } from '@components/TabsChart/datas';
+import { tabsData, playTabsData, selectedTabData } from '@components/TabsChart/data';
 import { Tab, KeyOfTabs } from '@customTypes/common';
 
 const AlarmDashboard = () => {
