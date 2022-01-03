@@ -36,67 +36,56 @@ window.ENV = {
 window.TEAM_NAME = [
   {
     id: 1,
-    value: 'SmartWork팀',
     title: 'SmartWork팀',
     order: 1,
   },
   {
     id: 2,
-    value: 'Infra팀',
     title: 'Infra팀',
     order: 2,
   },
   {
     id: 3,
-    value: '정보보안팀',
     title: '정보보안팀',
     order: 3,
   },
   {
     id: 4,
-    value: 'Mobile융합팀',
     title: 'Mobile융합팀',
     order: 4,
   },
   {
     id: 5,
-    value: 'Architecture팀',
     title: 'Architecture팀',
     order: 5,
   },
   {
     id: 6,
-    value: 'FPM서비스팀',
     title: 'FPM서비스팀',
     order: 6,
   },
   {
     id: 7,
-    value: 'SCM서비스팀',
     title: 'SCM서비스팀',
     order: 7,
   },
   {
     id: 8,
-    value: '제조서비스팀',
     title: '제조서비스팀',
     order: 8,
   },
   {
     id: 9,
-    value: 'Smart Factory팀',
     title: 'Smart Factory팀',
     order: 9,
   },
   {
     id: 10,
-    value: '건설/모터스서비스팀',
     title: '건설/모터스서비스팀',
     order: 10,
   },
   {
     id: 11,
-    value: 'HR/IT서비스팀',
     title: 'HR/IT서비스팀',
     order: 11,
   },

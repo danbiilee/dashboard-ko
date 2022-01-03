@@ -44,7 +44,6 @@ export interface ChartData {
 }
 export interface TeamName {
   id: number;
-  value: string;
   title: string;
   order: number;
 }
