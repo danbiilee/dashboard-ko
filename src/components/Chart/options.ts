@@ -63,6 +63,7 @@ const commonOptions = {
         color: '#BDC1D1',
         fontSize: '1.2rem',
       },
+      format: '{value:,.f}',
     },
     gridLineColor: '#5470805C',
   },

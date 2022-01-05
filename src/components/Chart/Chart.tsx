@@ -8,6 +8,13 @@ import { useChart } from '@hooks/useChart';
 import Indicator from '@components/Indicator';
 import { areEqual, getCategories, getSeries } from '@customUtils/index';
 
+Highcharts.setOptions({
+  lang: {
+    decimalPoint: ',',
+    thousandsSep: ',',
+  },
+});
+
 export interface ChartProps {
   type: keyof typeof chartOptions;
   param?: ChartParam;
