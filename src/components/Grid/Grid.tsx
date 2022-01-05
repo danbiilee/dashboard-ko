@@ -49,12 +49,12 @@ const Grid: React.FC<GridProps> = ({ type }) => {
                       className={`cell ${classNames[key]} ${i % 2 === 0 ? 'even' : 'odd'} ${
                         key === 'ALARMSEVERITY' && value === '경고' ? 'warning' : 'critical'
                       }`}
-                      title={key === 'INC' ? `${Math.abs(value as number)}%` : value.toLocaleString()}
+                      title={key === 'INC' ? `${Math.abs(value as number).toLocaleString()}%` : value.toLocaleString()}
                     >
                       {key === 'INC' ? (
                         <>
                           {value !== 0 && <span className={value < 0 ? 'dec' : 'inc'}></span>}
-                          <span>{`${Math.abs(value as number)}%`}</span>
+                          <span>{`${Math.abs(value as number).toLocaleString()}%`}</span>
                         </>
                       ) : (
                         <span className="text">{value.toLocaleString()}</span>

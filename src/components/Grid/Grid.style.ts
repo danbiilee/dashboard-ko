@@ -32,8 +32,8 @@ export const StyledGrid = styled.div<StyledGridProps>`
           case 'notTaken':
             return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
           case 'prepare':
-            return `4.6rem 15.5rem minmax(16.5rem, auto) 6rem 6rem minmax(auto, ${
-              length > 5 ? 'calc(9rem + 6px)' : '9rem'
+            return `4.6rem 15.5rem minmax(16.2rem, auto) 5.6rem 5.6rem minmax(auto, ${
+              length > 5 ? 'calc(10rem + 6px)' : '10rem'
             })`;
         }
       }};
@@ -54,7 +54,7 @@ export const StyledGrid = styled.div<StyledGridProps>`
           case 'notTaken':
             return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
           case 'prepare':
-            return '4.6rem 15.5rem minmax(16.5rem, auto) 6rem 6rem minmax(auto, 9rem)';
+            return '4.6rem 15.5rem minmax(16.2rem, auto) 5.6rem 5.6rem 10rem';
         }
       }};
     }
@@ -66,7 +66,7 @@ export const StyledGrid = styled.div<StyledGridProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 1rem;
+    padding: 0 0.8rem 0 1rem;
     &:not(:first-of-type) {
       border-left: 1px solid #14232b;
     }
@@ -118,8 +118,11 @@ export const StyledGrid = styled.div<StyledGridProps>`
   .cell:is(.no, .cnt, .this-week, .last-week, .ratio) {
     font-size: 2.2rem;
   }
+  .cell:is(.this-week, .last-week) {
+    font-size: 2rem;
+  }
   .cell.ratio {
-    font-size: 1.9rem;
+    font-size: 1.85rem;
   }
 
   // Align
@@ -130,15 +133,15 @@ export const StyledGrid = styled.div<StyledGridProps>`
   // Arrow
   .inc,
   .dec {
-    margin: -0.1rem 0.5rem 0 0;
-    border: 0.7rem solid transparent;
+    margin: -0.3rem 0.3rem 0 0;
+    border: 0.6rem solid transparent;
   }
   .inc {
-    border-bottom: 1.4rem solid #e6361f;
+    border-bottom: 1.2rem solid #e6361f;
     border-top: 0;
   }
   .dec {
-    border-top: 1.4rem solid #000093;
+    border-top: 1.2rem solid #000093;
     border-bottom: 0;
   }
 `;
