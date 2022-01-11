@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyledGrid } from './Grid.style';
-import { GridData } from '@customTypes/common';
+import { GridData, GridTypes } from '@customTypes/common';
 import { useGrid } from '@hooks/useGrid';
 import { useEmsUrl } from '@hooks/useEmsUrl';
 import Indicator from '@components/Indicator';
-import { classNames, columns } from './data';
+import { GRID_CLASS, GRID_COLUMNS } from './data';
 
 interface GridProps {
-  type: string;
+  type: GridTypes;
 }
 
 const Grid: React.FC<GridProps> = ({ type }) => {
@@ -24,7 +24,7 @@ const Grid: React.FC<GridProps> = ({ type }) => {
       <StyledGrid type={type} length={data.length}>
         <div className="thead">
           <div className="row">
-            {(columns[type] as string[]).map((column, i) => (
+            {(GRID_COLUMNS[type] as string[]).map((column, i) => (
               <div key={i} className="cell" title={column}>
                 <span className="text">{column}</span>
               </div>
@@ -46,7 +46,7 @@ const Grid: React.FC<GridProps> = ({ type }) => {
                   return (
                     <div
                       key={i}
-                      className={`cell ${classNames[key]} ${i % 2 === 0 ? 'even' : 'odd'} ${
+                      className={`cell ${GRID_CLASS[key as keyof GridData]} ${i % 2 === 0 ? 'even' : 'odd'} ${
                         key === 'ALARMSEVERITY' && value === '경고' ? 'warning' : 'critical'
                       }`}
                       title={key === 'INC' ? `${Math.abs(value as number).toLocaleString()}%` : value.toLocaleString()}
@@ -54,7 +54,7 @@ const Grid: React.FC<GridProps> = ({ type }) => {
                       {key === 'INC' ? (
                         <>
                           {value !== 0 && <span className={value < 0 ? 'dec' : 'inc'}></span>}
-                          <span>{`${Math.abs(value as number).toLocaleString()}%`}</span>
+                          <span>{Math.abs(value as number).toLocaleString()}</span>
                         </>
                       ) : (
                         <span className="text">{value.toLocaleString()}</span>

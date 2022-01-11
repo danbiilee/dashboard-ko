@@ -49,6 +49,7 @@ export interface TeamName {
 }
 
 // Grid
+export type GridTypes = 'month' | 'notTaken' | 'week' | 'prepare';
 export interface GridData {
   NO?: number;
   SERVICE_NAME?: string;
