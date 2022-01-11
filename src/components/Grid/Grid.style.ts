@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface StyledGridProps {
   type: string;
@@ -11,7 +11,7 @@ export const StyledGrid = styled.div<StyledGridProps>`
   flex-direction: column;
   width: 100%;
   color: #bee3ff;
-  font-size: 2rem;
+  font-size: 1.9rem;
   .row {
     display: grid;
     border-top: 1px solid #14232b;
@@ -32,8 +32,8 @@ export const StyledGrid = styled.div<StyledGridProps>`
           case 'notTaken':
             return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
           case 'prepare':
-            return `4.6rem 15.5rem minmax(16.2rem, auto) 5.6rem 5.6rem minmax(auto, ${
-              length > 5 ? 'calc(10rem + 6px)' : '10rem'
+            return `4.6rem 15.5rem minmax(16.7rem, auto) 5.6rem 5.6rem minmax(auto, ${
+              length > 5 ? 'calc(9.5rem + 6px)' : '9.5rem'
             })`;
         }
       }};
@@ -54,7 +54,7 @@ export const StyledGrid = styled.div<StyledGridProps>`
           case 'notTaken':
             return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
           case 'prepare':
-            return '4.6rem 15.5rem minmax(16.2rem, auto) 5.6rem 5.6rem 10rem';
+            return '4.6rem 15.5rem minmax(16.7rem, auto) 5.6rem 5.6rem 9.5rem';
         }
       }};
     }
@@ -115,19 +115,23 @@ export const StyledGrid = styled.div<StyledGridProps>`
   }
 
   // Size
-  .cell:is(.no, .cnt, .this-week, .last-week, .ratio) {
-    font-size: 2.2rem;
-  }
-  .cell:is(.this-week, .last-week) {
+  .cell:is(.no, .cnt, .this-week, .last-week) {
     font-size: 2rem;
   }
-  .cell.ratio {
-    font-size: 1.85rem;
-  }
+  ${({ type }) =>
+    type === 'prepare' &&
+    css`
+      .thead .cell:last-of-type {
+        letter-spacing: -0.5px;
+      }
+    `}
 
   // Align
   .cell:is(.service-nm, .team-nm, .alarm-nm, .log) {
     justify-content: start;
+  }
+  .cell:is(.cnt, .this-week, .last-week, .day, .ratio) {
+    justify-content: end;
   }
 
   // Arrow
