@@ -1,10 +1,6 @@
 import { KeyOfTabs, Tab } from '@customTypes/common';
 
-type IndexTypeOfTabs = {
-  [index in KeyOfTabs]: Tab[];
-};
-
-export const tabsData: IndexTypeOfTabs = {
+export const tabsData: Record<KeyOfTabs, Tab[]> = {
   week: [
     {
       id: 0,
@@ -41,19 +37,12 @@ export const tabsData: IndexTypeOfTabs = {
   ],
 };
 
-type IndexTypeOfPlay = {
-  [index in KeyOfTabs]: boolean;
-};
-type IndexTypeOfSelected = {
-  [index in KeyOfTabs]: number;
-};
-
-export const playTabsData: IndexTypeOfPlay = {
+export const playTabsData: Record<KeyOfTabs, boolean> = {
   week: true,
   team: true,
 };
 
-export const selectedTabData: IndexTypeOfSelected = {
+export const selectedTabData: Record<KeyOfTabs, number> = {
   week: 0,
   team: 0,
 };

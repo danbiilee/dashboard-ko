@@ -10,7 +10,6 @@ import { areEqual, getCategories, getSeries } from '@customUtils/index';
 
 Highcharts.setOptions({
   lang: {
-    decimalPoint: ',',
     thousandsSep: ',',
   },
 });
