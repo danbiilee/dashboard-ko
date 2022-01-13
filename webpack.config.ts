@@ -167,7 +167,6 @@ if (isDevelopment && config.plugins) {
   config.plugins.push(new ReactRefreshWebpackPlugin());
 }
 if (!isDevelopment && config.plugins) {
-  config.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
   config.plugins.push(
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
