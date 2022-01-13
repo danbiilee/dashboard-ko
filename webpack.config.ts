@@ -6,10 +6,10 @@ import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-serv
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import moment from 'moment';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import moment from 'moment';
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
@@ -18,30 +18,16 @@ interface Configuration extends WebpackConfiguration {
 const isDevelopment = process.env['NODE_ENV'] !== 'production';
 
 const config: Configuration = {
-  name: 'setup-test',
+  name: 'kolonbenit-setting',
   mode: isDevelopment ? 'development' : 'production',
-  devtool: isDevelopment ? 'inline-source-map' : false,
-  devServer: {
-    port: 4000,
-    static: { directory: path.join(__dirname, 'public') },
-    historyApiFallback: true,
-    compress: true,
-  },
   entry: {
     app: './src/index.tsx',
   },
-  resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-    alias: {
-      '@images': path.resolve(__dirname, 'src/assets/images'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@layouts': path.resolve(__dirname, 'src/layouts'),
-      '@pages': path.resolve(__dirname, 'src/pages'),
-      '@hooks': path.resolve(__dirname, 'src/hooks'),
-      '@contexts': path.resolve(__dirname, 'src/contexts'),
-      '@customUtils': path.resolve(__dirname, 'src/utils'),
-      '@customTypes': path.resolve(__dirname, 'src/types'),
-    },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: isDevelopment ? '[name].js' : '[name].[contenthash].js',
+    assetModuleFilename: 'assets/[hash][ext][query]',
+    clean: true,
   },
   module: {
     rules: [
@@ -82,6 +68,30 @@ const config: Configuration = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    alias: {
+      '@images': path.resolve(__dirname, 'src/assets/images'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@layouts': path.resolve(__dirname, 'src/layouts'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@contexts': path.resolve(__dirname, 'src/contexts'),
+      '@customUtils': path.resolve(__dirname, 'src/utils'),
+      '@customTypes': path.resolve(__dirname, 'src/types'),
+    },
+  },
+  performance: {
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
+  devtool: isDevelopment ? 'inline-source-map' : false,
+  devServer: {
+    port: 4000,
+    static: { directory: path.join(__dirname, 'public') },
+    historyApiFallback: true,
+    compress: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -111,10 +121,6 @@ const config: Configuration = {
     }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ko/),
   ],
-  performance: {
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
-  },
   optimization: {
     minimizer: [
       new TerserPlugin({
@@ -142,18 +148,11 @@ const config: Configuration = {
       maxSize: 512000,
     },
   },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: isDevelopment ? '[name].js' : '[name]-[contenthash].js',
-    assetModuleFilename: 'assets/[name]-[contenthash][ext]',
-    clean: true,
-  },
 };
 
 if (isDevelopment && config.plugins) {
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
   config.plugins.push(new ReactRefreshWebpackPlugin());
-  // config.plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'server', openAnalyzer: false }));
 }
 if (!isDevelopment && config.plugins) {
   config.plugins.push(new webpack.LoaderOptionsPlugin({ minimize: true }));
