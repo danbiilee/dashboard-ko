@@ -142,6 +142,7 @@ const config: Configuration = {
           },
         },
         extractComments: false,
+        exclude: /config\//,
       }),
       new CssMinimizerPlugin({
         minimizerOptions: {
