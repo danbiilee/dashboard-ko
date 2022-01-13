@@ -171,6 +171,7 @@ if (!isDevelopment && config.plugins) {
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       reportFilename: `bundle-report-${moment().format('YYYY-MM-DD-HH-mm-ss')}.html`,
+      openAnalyzer: false,
     }),
   );
 }
