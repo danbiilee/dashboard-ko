@@ -4,6 +4,7 @@ import { GridData, GridTypes } from '@customTypes/common';
 import { useFetchGrid } from '@hooks/useFetchGrid';
 import Indicator from '@components/Indicator';
 import { GRID_CLASS, GRID_COLUMNS } from './data';
+import { openEMS } from '@customUtils/index';
 
 interface GridProps {
   type: GridTypes;
@@ -35,11 +36,7 @@ const Grid: React.FC<GridProps> = ({ type }) => {
             <Indicator isEmpty={true} />
           ) : (
             data.map((rowData: GridData) => (
-              <div
-                key={rowData.NO}
-                className="row"
-                // onClick={() => useEmsUrl(rowData.IP!, rowData?.ALARM_NAME)}
-              >
+              <div key={rowData.NO} className="row" onClick={() => openEMS(rowData.IP!, rowData?.ALARM_NAME)}>
                 {Object.entries(rowData).map(([key, value], i) => {
                   if (key === 'IP') return;
                   return (

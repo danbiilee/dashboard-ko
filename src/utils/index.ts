@@ -1,5 +1,6 @@
 import { ChartParam, ChartData, TeamName } from '@customTypes/common';
 import { dequal } from 'dequal';
+import { useFetchToken } from '@hooks/useFetchToken';
 
 export const getQueryString = (param: ChartParam) => {
   return Object.entries(param)
@@ -95,4 +96,26 @@ export const getSeries = (type: string, data: ChartData[], series: any) => {
   }
 
   return result;
+};
+
+export const openEMS = async (ip: string, alarmName?: string) => {
+  const { data, isError } = await useFetchToken();
+  if (isError) {
+    return;
+  }
+
+  const { uuid, publicKeyExponent, publicKeyModulus } = data!;
+
+  const rsa = new RSAKey();
+  rsa.setPublic(publicKeyModulus, publicKeyExponent);
+
+  const sid = rsa.encrypt('admin');
+  const spw = rsa.encrypt('Nkia!234');
+
+  let url = `${ENV.EMS_URL}/${ENV.EMS_REST_URI.alarm}/${uuid}/${sid}/${spw}?alarmIp=${encodeURIComponent(ip)}`;
+  if (alarmName) {
+    url += `&alarmName=${encodeURIComponent(alarmName)}`;
+  }
+
+  window.open(url);
 };
