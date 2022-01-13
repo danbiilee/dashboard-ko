@@ -40,7 +40,9 @@ const fetcher = async (
   setMappedNames(getMappedNames(jsonData.metrics));
 };
 
-export const useRelation = (setMappedNames: React.Dispatch<React.SetStateAction<MappedRelation[] | undefined>>) => {
+export const useFetchRelation = (
+  setMappedNames: React.Dispatch<React.SetStateAction<MappedRelation[] | undefined>>,
+) => {
   let url;
 
   if (ENV.IS_LOCAL) {

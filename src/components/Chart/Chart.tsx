@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { StyledChart } from './Chart.style';
 import { chartOptions } from '@components/Chart/options';
 import { ChartParam } from '@customTypes/common';
-import { useChart } from '@hooks/useChart';
+import { useFetchChart } from '@hooks/useFetchChart';
 import Indicator from '@components/Indicator';
 import { areEqual, getCategories, getSeries } from '@customUtils/index';
 
@@ -24,7 +24,7 @@ const Chart: React.FC<ChartProps> = ({ type, param }) => {
   const path = type === 'search' ? undefined : type;
 
   const [options, setOptions] = useState(chartOptions[type]);
-  const { data, isLoading, isError } = useChart(urlType, path, param);
+  const { data, isLoading, isError } = useFetchChart(urlType, path, param);
 
   useEffect(() => {
     if (!data) {

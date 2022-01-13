@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyledGrid } from './Grid.style';
 import { GridData, GridTypes } from '@customTypes/common';
-import { useGrid } from '@hooks/useGrid';
-import { useEmsUrl } from '@hooks/useEmsUrl';
+import { useFetchGrid } from '@hooks/useFetchGrid';
 import Indicator from '@components/Indicator';
 import { GRID_CLASS, GRID_COLUMNS } from './data';
 
@@ -11,7 +10,7 @@ interface GridProps {
 }
 
 const Grid: React.FC<GridProps> = ({ type }) => {
-  let { data, isLoading, isError } = useGrid(type);
+  const { data, isLoading, isError } = useFetchGrid(type);
 
   if (isLoading) {
     return <Indicator isLoading={isLoading} size="default" />;

@@ -7,7 +7,7 @@ const fetcher = async (url: string) => {
   return jsonData.metrics.map((data: GridData, i: number) => ({ NO: i + 1, ...data }));
 };
 
-export const useGrid = (path: string) => {
+export const useFetchGrid = (path: string) => {
   let url;
 
   if (ENV.IS_LOCAL) {

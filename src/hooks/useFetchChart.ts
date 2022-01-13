@@ -8,7 +8,7 @@ const fetcher = async (url: string, path: string) => {
   return path === 'week' || path === 'time' ? jsonData.metrics.reverse() : jsonData.metrics;
 };
 
-export const useChart = (type: string, path?: string, param?: ChartParam) => {
+export const useFetchChart = (type: string, path?: string, param?: ChartParam) => {
   let url;
 
   if (ENV.IS_LOCAL) {

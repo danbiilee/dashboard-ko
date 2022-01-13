@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { MappedRelation } from '@customTypes/common';
-import { useRelation } from '@hooks/useRelation';
+import { useFetchRelation } from '@hooks/useFetchRelation';
 
 interface RelationProvider {
   children: React.ReactNode;
@@ -21,7 +21,7 @@ const RelationProvider: React.FC<RelationProvider> = ({ children }) => {
   const [mappedNames, setMappedNames] = useState<MappedRelation[]>();
 
   useEffect(() => {
-    useRelation(setMappedNames);
+    useFetchRelation(setMappedNames);
   }, []);
 
   return (
