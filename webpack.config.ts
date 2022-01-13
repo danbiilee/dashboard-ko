@@ -1,4 +1,5 @@
 import path from 'path';
+import childProcess from 'child_process';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import webpack, { Configuration as WebpackConfiguration } from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
@@ -16,6 +17,15 @@ interface Configuration extends WebpackConfiguration {
 }
 
 const isDevelopment = process.env['NODE_ENV'] !== 'production';
+
+const removeNewLine = (buffer: Buffer) => {
+  return buffer.toString().replace('\n', '');
+};
+const banner = `/*
+  Build Date :: ${new Date().toLocaleString()}
+  Commit Version :: ${removeNewLine(childProcess.execSync('git rev-parse --short HEAD'))}
+  Auth.name :: ${removeNewLine(childProcess.execSync('git config user.name'))}
+*/`;
 
 const config: Configuration = {
   name: 'kolonbenit-setting',
@@ -127,6 +137,7 @@ const config: Configuration = {
         parallel: true,
         terserOptions: {
           format: {
+            preamble: banner,
             comments: false,
           },
         },
