@@ -10,7 +10,6 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import moment from 'moment';
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
@@ -127,7 +126,7 @@ const config: Configuration = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: isDevelopment ? '[name].css' : '[name]-[contenthash].css',
+      filename: isDevelopment ? '[name].css' : '[name].[contenthash].css',
     }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ko/),
   ],
@@ -170,7 +169,7 @@ if (!isDevelopment && config.plugins) {
   config.plugins.push(
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      reportFilename: `bundle-report-${moment().format('YYYY-MM-DD-HH-mm-ss')}.html`,
+      reportFilename: `report_${Date.now()}.html`,
       openAnalyzer: false,
     }),
   );
