@@ -5,6 +5,8 @@ import { useFetchGrid } from '@hooks/useFetchGrid';
 import Indicator from '@components/Indicator';
 import { GRID_CLASS, GRID_COLUMNS } from './data';
 import { openEMS } from '@customUtils/index';
+import { useFetchToken } from '@hooks/useFetchToken';
+import { useSetAlert } from '@contexts/Alert';
 
 interface GridProps {
   type: GridTypes;
@@ -12,6 +14,22 @@ interface GridProps {
 
 const Grid: React.FC<GridProps> = ({ type }) => {
   const { data, isLoading, isError } = useFetchGrid(type);
+  const setAlert = useSetAlert();
+
+  const handleClick = async (ip: string, alarmName?: string) => {
+    const { data, isError } = await useFetchToken();
+
+    if (isError) {
+      setAlert({ status: true, message: `EMS Public Key를 가져오는데 실패했습니다. 다시 시도해주세요. \n${isError}` });
+      return;
+    }
+
+    openEMS({
+      data,
+      ip,
+      alarmName,
+    });
+  };
 
   if (isLoading) {
     return <Indicator isLoading={isLoading} size="default" />;
@@ -36,7 +54,7 @@ const Grid: React.FC<GridProps> = ({ type }) => {
             <Indicator isEmpty={true} />
           ) : (
             data.map((rowData: GridData) => (
-              <div key={rowData.NO} className="row" onClick={() => openEMS(rowData.IP!, rowData?.ALARM_NAME)}>
+              <div key={rowData.NO} className="row" onClick={() => handleClick(rowData.IP!, rowData?.ALARM_NAME)}>
                 {Object.entries(rowData).map(([key, value], i) => {
                   if (key === 'IP') return;
                   return (

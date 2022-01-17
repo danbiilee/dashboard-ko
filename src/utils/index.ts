@@ -1,6 +1,5 @@
 import { ChartParam, ChartData, TeamName } from '@customTypes/common';
 import { dequal } from 'dequal';
-import { useFetchToken } from '@hooks/useFetchToken';
 
 export const getQueryString = (param: ChartParam) => {
   return Object.entries(param)
@@ -98,12 +97,8 @@ export const getSeries = (type: string, data: ChartData[], series: any) => {
   return result;
 };
 
-export const openEMS = async (ip: string, alarmName?: string) => {
-  const { data, isError } = await useFetchToken();
-  if (isError) {
-    return;
-  }
-
+export const openEMS = async (param: { data: any; ip: string; alarmName?: string }) => {
+  const { data, ip, alarmName } = param;
   const { uuid, publicKeyExponent, publicKeyModulus } = data!;
 
   const rsa = new RSAKey();
