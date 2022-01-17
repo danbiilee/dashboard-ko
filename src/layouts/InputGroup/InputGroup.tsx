@@ -6,12 +6,6 @@ import Select from '@components/Select';
 import RangePicker from '@components/RangePicker';
 import { ExcelButton, SearchButton } from '@components/Button';
 import { useMappedNames, useSetMappedNames } from '@contexts/Relation';
-import { Alert } from 'antd';
-
-export const defaultAlertState = {
-  status: false,
-  message: '',
-};
 
 export interface InputGroupProps {
   searchInputs: SearchInputs;
@@ -22,7 +16,6 @@ const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }
   const mappedNames = useMappedNames();
   const setMappedNames = useSetMappedNames();
   const [localInputs, setLocalInputs] = useState<SearchInputs>(searchInputs);
-  const [alert, setAlert] = useState(defaultAlertState);
 
   const handleChange = useCallback(
     (name: string, value: string) => {
@@ -58,17 +51,7 @@ const InputGroup: React.FC<InputGroupProps> = ({ searchInputs, setSearchInputs }
         <RangePicker searchInputs={localInputs} handleChange={handleChange} />
       </Label>
       <SearchButton searchInputs={localInputs} setSearchInputs={setSearchInputs} />
-      <ExcelButton searchInputs={localInputs} setAlert={setAlert} />
-      {alert.status && (
-        <Alert
-          message="Warning"
-          description={alert.message}
-          type="warning"
-          showIcon
-          closable
-          afterClose={() => setAlert((alert) => ({ ...alert, status: false }))}
-        />
-      )}
+      <ExcelButton searchInputs={localInputs} />
     </StyledInputGroup>
   );
 };

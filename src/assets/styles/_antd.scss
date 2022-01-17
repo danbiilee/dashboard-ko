@@ -92,3 +92,37 @@
 .ant-spin-dot-item {
   background-color: #528500;
 }
+
+// Alert
+.ant-alert {
+  z-index: 10;
+  position: absolute;
+  top: 5rem;
+  left: calc(50% - 250px);
+  width: 500px;
+  font-size: 2rem;
+}
+.ant-alert-warning {
+  padding: 2rem 2.5rem 2.5rem 3rem;
+  border: 1px solid #f5c010;
+  .ant-alert-icon {
+    margin-top: 0.1rem;
+    color: #f5c010;
+    font-size: 3rem;
+  }
+  .ant-alert-message {
+    margin-bottom: 0.8rem;
+    font-size: 2.1rem;
+  }
+  .ant-alert-description {
+    font-size: 1.8rem;
+  }
+  .ant-alert-close-icon {
+    margin-left: 3rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    * {
+      cursor: pointer;
+    }
+  }
+}
