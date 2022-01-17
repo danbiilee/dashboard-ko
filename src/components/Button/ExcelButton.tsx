@@ -1,17 +1,18 @@
 import React from 'react';
 import { StyledExcelButton } from './Button.style';
-import { defaultAlertState, InputGroupProps } from '@layouts/InputGroup/InputGroup';
+import { InputGroupProps } from '@layouts/InputGroup/InputGroup';
 import { getQueryString } from '@customUtils/index';
 import IconExcel from '@images/icon-excel.png';
+import { useSetAlert } from '@contexts/Alert';
 
-interface ExcelButtonProps extends Pick<InputGroupProps, 'searchInputs'> {
-  setAlert: React.Dispatch<React.SetStateAction<typeof defaultAlertState>>;
-}
+interface ExcelButtonProps extends Pick<InputGroupProps, 'searchInputs'> {}
 
-const ExcelButton: React.FC<ExcelButtonProps> = ({ searchInputs, setAlert }) => {
+const ExcelButton: React.FC<ExcelButtonProps> = ({ searchInputs }) => {
+  const setAlert = useSetAlert();
+
   const onClick = () => {
     if (ENV.IS_LOCAL) {
-      alert('지원하지 않는 기능입니다');
+      setAlert({ status: true, message: '지원하지 않는 기능입니다' });
       return;
     }
     if (searchInputs.team === 'total') {
