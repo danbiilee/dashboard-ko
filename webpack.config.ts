@@ -94,7 +94,7 @@ const config: Configuration = {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-  devtool: isDevelopment ? 'inline-source-map' : false,
+  devtool: isDevelopment ? 'eval-cheap-module-source-map' : false,
   devServer: {
     port: 4000,
     static: { directory: path.join(__dirname, 'public') },
