@@ -30,12 +30,29 @@ const config: Configuration = {
   name: 'kolonbenit-setting',
   mode: isDevelopment ? 'development' : 'production',
   entry: {
-    app: './src/index.tsx',
+    app: { import: './src/index.tsx', dependOn: 'react-vendors' },
+    'react-vendors': ['react', 'react-dom', 'react-router-dom'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: isDevelopment ? '[name].js' : '[name].[contenthash].js',
-    assetModuleFilename: 'assets/[hash][ext][query]',
+    filename: (pathData) => {
+      if (isDevelopment) {
+        return '[name].js';
+      }
+      const { name } = pathData.chunk!;
+      return name!.includes('app') ? '[name].[contenthash:8].js' : 'vendors/[name].js';
+    },
+    chunkFilename: (pathData) => {
+      if (isDevelopment) {
+        return '[name].js';
+      }
+      if (pathData.chunk!.name === 'alarm' || pathData.chunk!.name === 'status') {
+        return '[name].[contenthash:8].js';
+      } else {
+        return 'vendors/[name].js';
+      }
+    },
+    assetModuleFilename: 'assets/[contenthash:8][ext][query]',
     clean: true,
   },
   module: {
@@ -123,7 +140,7 @@ const config: Configuration = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: isDevelopment ? '[name].css' : '[name].[contenthash].css',
+      filename: isDevelopment ? '[name].css' : '[name].[contenthash:8].css',
     }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ko/),
   ],
@@ -152,6 +169,7 @@ const config: Configuration = {
       }),
     ],
     splitChunks: {
+      name: 'vendors',
       minSize: 250000,
       maxSize: 512000,
     },
@@ -162,6 +180,7 @@ if (isDevelopment && config.plugins) {
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
   config.plugins.push(new ReactRefreshWebpackPlugin());
 }
+
 if (!isDevelopment && config.plugins) {
   config.plugins.push(
     new BundleAnalyzerPlugin({

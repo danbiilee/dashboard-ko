@@ -6,8 +6,8 @@ import Header from '@layouts/Header';
 import RelationProvider from '@contexts/Relation';
 import AlertProvider from '@contexts/Alert';
 
-const AlarmDashboard = loadable(() => import('@pages/AlarmDashboard'));
-const CriticalWarningStatus = loadable(() => import('@pages/CriticalWarningStatus'));
+const AlarmDashboard = loadable(() => import(/* webpackChunkName: "alarm" */ '@pages/AlarmDashboard'));
+const CriticalWarningStatus = loadable(() => import(/* webpackChunkName: "status" */ '@pages/CriticalWarningStatus'));
 
 const App = () => {
   return (
