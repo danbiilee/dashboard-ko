@@ -7,4 +7,4 @@ node_modules
 
 # production
 /dist
-dist.zip
+*.zip
