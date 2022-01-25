@@ -5,6 +5,22 @@ interface StyledGridProps {
   length: number;
 }
 
+const theadFormat = (length: number, size: string) => `minmax(auto, ${length > 5 ? `calc(${size} + 6px)` : size})`;
+const getColWidth = (type: string, isThead: boolean, length?: number): string => {
+  switch (type) {
+    case 'month':
+    case 'week':
+    default:
+      return `4.8rem 22.3rem minmax(21.8rem, auto) ${isThead ? theadFormat(length!, '8.3rem') : '8.3rem'}`;
+    case 'notTaken':
+      return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
+    case 'prepare':
+      return `4.6rem 15.5rem minmax(16.7rem, auto) 5.6rem 5.6rem ${
+        isThead ? theadFormat(length!, '9.5rem') : '9.5rem'
+      }`;
+  }
+};
+
 export const StyledGrid = styled.div<StyledGridProps>`
   // Layout
   display: flex;
@@ -23,20 +39,7 @@ export const StyledGrid = styled.div<StyledGridProps>`
     text-shadow: 0px 1px 1px #000000f4;
     .row {
       height: 100%;
-      grid-template-columns: ${({ type, length }) => {
-        switch (type) {
-          case 'month':
-          case 'week':
-          default:
-            return `4.8rem 22.3rem minmax(21.8rem, auto) minmax(auto, ${length > 5 ? 'calc(8.3rem + 6px)' : '8.3rem'})`;
-          case 'notTaken':
-            return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
-          case 'prepare':
-            return `4.6rem 15.5rem minmax(16.7rem, auto) 5.6rem 5.6rem minmax(auto, ${
-              length > 5 ? 'calc(9.5rem + 6px)' : '9.5rem'
-            })`;
-        }
-      }};
+      grid-template-columns: ${({ type, length }) => getColWidth(type, true, length)};
     }
   }
   .tbody {
@@ -45,18 +48,7 @@ export const StyledGrid = styled.div<StyledGridProps>`
     display: grid;
     grid-template-rows: repeat(${({ length }) => length}, 20%);
     .row {
-      grid-template-columns: ${({ type }) => {
-        switch (type) {
-          case 'month':
-          case 'week':
-          default:
-            return '4.8rem 22.3rem minmax(21.8rem, auto) 8.3rem';
-          case 'notTaken':
-            return '4.8rem 27.3rem 6rem 26.6rem 9rem auto';
-          case 'prepare':
-            return '4.6rem 15.5rem minmax(16.7rem, auto) 5.6rem 5.6rem 9.5rem';
-        }
-      }};
+      grid-template-columns: ${({ type }) => getColWidth(type, false)};
     }
     .row:hover div {
       background-color: #33454d;
