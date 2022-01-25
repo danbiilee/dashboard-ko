@@ -141,7 +141,7 @@ const obsOptions = {
   ...commonOptions,
   chart: {
     ...commonOptions.chart,
-    marginBottom: 42, // 25
+    marginBottom: 42,
   },
   tooltip: {
     ...commonOptions.tooltip,
@@ -151,13 +151,12 @@ const obsOptions = {
     categories: [],
     labels: {
       useHTML: true,
-      y: 8, // 20
+      y: 8,
       style: {
         color: '#BDC1D1',
         fontSize: '1rem',
       },
       formatter: function (this: Highcharts.AxisLabelsFormatterContextObject) {
-        // return `<span style='display: inline-block; max-width: 3.6rem; overflow: hidden; text-overflow: ellipsis; white-space:nowrap;'>${this.value}</span>`;
         return `<span style='display: inline-block; max-width: 5rem; overflow: hidden; text-overflow: ellipsis; white-space:nowrap;'>${this.value}</span>`;
       },
     },
@@ -177,7 +176,6 @@ const obsOptions = {
       color: '#E6361F',
       borderWidth: 0,
       data: [],
-      // data: [22, 22, 22, 22, 22, 22, 22, 22, 95, 22, 22],
     },
     {
       name: 'B급',
@@ -185,7 +183,6 @@ const obsOptions = {
       color: '#F5C010',
       borderWidth: 0,
       data: [],
-      // data: [35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35],
     },
   ],
 };
@@ -194,7 +191,7 @@ const teamOptions = {
   ...commonOptions,
   chart: {
     ...commonOptions.chart,
-    marginBottom: 42, // 25
+    marginBottom: 42,
   },
   tooltip: {
     ...commonOptions.tooltip,
@@ -210,7 +207,6 @@ const teamOptions = {
         fontSize: '1rem',
       },
       formatter: function (this: Highcharts.AxisLabelsFormatterContextObject) {
-        // return `<span style='display: inline-block; max-width: 3.6rem; overflow: hidden; text-overflow: ellipsis; white-space:nowrap;'>${this.value}</span>`;
         return `<span style='display: inline-block; max-width: 5rem; overflow: hidden; text-overflow: ellipsis; white-space:nowrap;'>${this.value}</span>`;
       },
     },
@@ -229,7 +225,6 @@ const teamOptions = {
       type: 'column',
       color: '#E6361F',
       borderWidth: 0,
-      // data: [22, 22, 22, 22, 22, 22, 22, 22, 95, 22, 22],
       data: [],
     },
     {
@@ -237,7 +232,6 @@ const teamOptions = {
       type: 'column',
       color: '#F5C010',
       borderWidth: 0,
-      // data: [35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35],
       data: [],
     },
   ],
@@ -286,7 +280,6 @@ const weekOptions = {
       color: '#768894',
       borderWidth: 0,
       data: [],
-      // data: [2, 6, 54, 18, 1, 17, 4],
     },
     {
       name: '금주',
@@ -294,7 +287,6 @@ const weekOptions = {
       color: '#F5C010',
       borderWidth: 0,
       data: [],
-      // data: [83, 17, 83, 19, 1, 33, 124],
     },
   ],
 };
@@ -342,7 +334,6 @@ const timeOptions = {
       color: '#E6361F',
       borderWidth: 0,
       data: [],
-      // data: [11, 11, 11, 11, 11, 11, 11, 15, 11, 11, 42, 13, 11, 11, 11, 11, 11, 11, 11, 11, 23, 11, 11, 11],
     },
     {
       name: '경고',
@@ -350,14 +341,12 @@ const timeOptions = {
       color: '#F5C010',
       borderWidth: 0,
       data: [],
-      // data: [35, 20, 40, 35, 40, 35, 35, 45, 35, 35, 65, 42, 35, 35, 35, 35, 35, 35, 35, 35, 52, 35, 35, 35],
     },
     {
       name: 'TOTAL',
       type: 'line',
       color: '#E6361F',
       data: [],
-      // data: [46, 31, 51, 46, 51, 46, 46, 60, 46, 46, 107, 55, 46, 46, 46, 46, 46, 46, 46, 46, 75, 46, 46, 46],
     },
   ],
 };
@@ -443,7 +432,6 @@ const searchOptions = {
         color: '#E6361F',
       },
       data: [],
-      // data: [22, 106, 55, 40, 64, 53, 22, 46, 40, 22, 2, 2],
     },
     {
       name: '경고',
@@ -454,7 +442,6 @@ const searchOptions = {
         color: '#F5C010',
       },
       data: [],
-      // data: [67, 145, 46, 76, 59, 57, 53, 95, 32, 38, 60, 80],
     },
     {
       name: 'TOTAL',
@@ -468,7 +455,6 @@ const searchOptions = {
         enabled: false,
       },
       data: [],
-      // data: [89, 251, 101, 126, 123, 110, 78, 141, 72, 60, 62, 82],
     },
   ],
 };
