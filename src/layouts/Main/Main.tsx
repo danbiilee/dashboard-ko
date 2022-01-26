@@ -1,7 +1,7 @@
 import React from 'react';
-import { Alert } from 'antd';
 import { StyledMain } from './Main.style';
-import { useAlert, useSetAlert, defaultAlert } from '@contexts/Alert';
+import { useAlert } from '@contexts/Alert';
+import Alert from '@components/Alert';
 
 export interface MainProps {
   type: string;
@@ -10,20 +10,10 @@ export interface MainProps {
 
 const Main: React.FC<MainProps> = ({ type, children }) => {
   const alert = useAlert();
-  const setAlert = useSetAlert();
 
   return (
     <>
-      {alert.status && (
-        <Alert
-          message="Warning"
-          description={alert.message}
-          type="warning"
-          showIcon
-          closable
-          afterClose={() => setAlert(defaultAlert)}
-        />
-      )}
+      {alert.status && <Alert />}
       <StyledMain type={type}>{children}</StyledMain>
     </>
   );
