@@ -3,7 +3,7 @@ import { Tab } from '@customTypes/common';
 
 interface ButtonProps extends Pick<Tab, 'selected'> {}
 
-export const StyledChartButtons = styled.div`
+export const StyledRollingTabs = styled.div`
   position: absolute;
   top: -5rem;
   display: flex;
@@ -17,7 +17,7 @@ export const StyledChartButtons = styled.div`
   }
 `;
 
-export const StyledChartButton = styled.button<ButtonProps>`
+export const StyledRollingTab = styled.button<ButtonProps>`
   width: 4rem;
   height: 2.4rem;
   margin-left: 0.6rem;

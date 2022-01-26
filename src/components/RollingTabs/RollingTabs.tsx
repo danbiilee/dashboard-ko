@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledChartButtons, StyledChartButton } from './ChartButtons.style';
+import { StyledRollingTabs, StyledRollingTab } from './RollingTabs.style';
 import { Tab, KeyOfTabs } from '@customTypes/common';
 import IconPlay from '@images/btn-play.png';
 import IconPause from '@images/btn-pause.png';
@@ -12,21 +12,21 @@ export interface ButtonsProps {
   handlePlay: (type: KeyOfTabs) => void;
 }
 
-const ChartButtons: React.FC<ButtonsProps> = ({ type, tabs, isPlay, handleClick, handlePlay }) => {
+const RollingTabs: React.FC<ButtonsProps> = ({ type, tabs, isPlay, handleClick, handlePlay }) => {
   return (
-    <StyledChartButtons>
+    <StyledRollingTabs>
       <button className="play" onClick={() => handlePlay(type)}>
         <img src={isPlay ? IconPause : IconPlay} alt="play" />
       </button>
       <div className="buttons">
         {tabs.map((tab, i) => (
-          <StyledChartButton key={i} selected={tab.selected} onClick={() => handleClick(type, tab.id)}>
+          <StyledRollingTab key={i} selected={tab.selected} onClick={() => handleClick(type, tab.id)}>
             {tab.title}
-          </StyledChartButton>
+          </StyledRollingTab>
         ))}
       </div>
-    </StyledChartButtons>
+    </StyledRollingTabs>
   );
 };
 
-export default ChartButtons;
+export default RollingTabs;
